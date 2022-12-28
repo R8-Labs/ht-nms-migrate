@@ -1,0 +1,15 @@
+{
+  "name": "admin-template",
+  "private": true,
+  "version": "0.0.0",
+  "author": "kimtj",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "ring": "node rings.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
