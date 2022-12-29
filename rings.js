@@ -64,7 +64,7 @@ async function main() {
       });
     }
   } catch (e) {
-    console.log(e.response.data.data);
+    console.log(e?.response?.data?.data);
   }
 }
 

@@ -6,12 +6,13 @@ npm install
 
 2. 환경설정
 
-config.js 에서 설정한다.
+config.js 에서 설정
 API -> API 서버 주소
-TOKEN -> 로그인 토큰인데 로그인 후에 로컬스토리지에서 가져온다.
+TOKEN -> node token.js 실행 후 반환되는 결과값을 config.js에 업데이트
 
 1. 각 단계별 코드 실행
 
+GROUP -> node groups.js
 RING -> node rings.js
 DEVICE -> node devices.js
 LINK -> node links.js

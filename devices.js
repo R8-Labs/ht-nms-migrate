@@ -270,7 +270,7 @@ async function main() {
       });
     }
   } catch (e) {
-    console.log(e.response.data);
+    console.log(e?.response?.data);
   }
 }
 
