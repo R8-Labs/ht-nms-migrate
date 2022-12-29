@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { API, TOKEN } = require("./config");
 const DEVICES = require("./DEVICES.json");
 const LINKS = require("./LINKS.json");
 const PATHS = require("./LINK_PATHS.json");
@@ -62,13 +63,12 @@ async function main() {
   // ?to ip 없는거
 
   const headers = {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmMTZmOTRmZi0wMTRhLTRjMDYtYTE4OC1mNTgzZmUwOTM1NWEiLCJzdWIiOiJhZG1pbiIsInBlcm1pc3Npb25zIjoiV1JJVEUsUkVBRCIsImV4cCI6MTY3Mzk5NzU2OH0.sLVA_CE2V-NC76RcvHJl4Ml1ncaN4Gvw1vJBT05bodg",
+    Authorization: "Bearer " + TOKEN,
   };
 
   try {
     const { data } = await axios({
-      url: "http://1.223.227.163:5000" + "/rings",
+      url: API + "/rings",
       params: { size: 10000 },
       headers,
     });
@@ -76,7 +76,7 @@ async function main() {
     const RINGLIST = data.data;
 
     const { data: portData } = await axios({
-      url: "http://1.223.227.163:5000" + "/devices/-/ports",
+      url: API + "/devices/-/ports",
       params: { size: 200000 },
       headers,
     });

@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { TOKEN, API } = require("./config");
 const DEVICES = require("./DEVICES.json");
 const MODELS = [
   {
@@ -247,11 +248,10 @@ async function main() {
 
       await axios({
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmMTZmOTRmZi0wMTRhLTRjMDYtYTE4OC1mNTgzZmUwOTM1NWEiLCJzdWIiOiJhZG1pbiIsInBlcm1pc3Npb25zIjoiV1JJVEUsUkVBRCIsImV4cCI6MTY3Mzk5NzU2OH0.sLVA_CE2V-NC76RcvHJl4Ml1ncaN4Gvw1vJBT05bodg",
+          Authorization: "Bearer " + TOKEN,
         },
         method: "PUT",
-        url: "http://1.223.227.163:5000" + "/devices",
+        url: API + "/devices",
         data: {
           name: item.device_id,
           ip: item.ip,

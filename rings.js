@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { API, TOKEN } = require("./config");
 const RINGS = require("./RINGS.json");
 const GROUPS = [
   {
@@ -112,11 +113,10 @@ async function main() {
   console.log("start");
   try {
     const { data } = await axios({
-      url: "http://1.223.227.163:5000" + "/groups",
+      url: API + "/groups",
       params: { size: 10000 },
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmMTZmOTRmZi0wMTRhLTRjMDYtYTE4OC1mNTgzZmUwOTM1NWEiLCJzdWIiOiJhZG1pbiIsInBlcm1pc3Npb25zIjoiV1JJVEUsUkVBRCIsImV4cCI6MTY3Mzk5NzU2OH0.sLVA_CE2V-NC76RcvHJl4Ml1ncaN4Gvw1vJBT05bodg",
+        Authorization: "Bearer " + TOKEN,
       },
     });
 
@@ -135,10 +135,9 @@ async function main() {
 
       await axios({
         method: "PUT",
-        url: "http://1.223.227.163:5000" + "/rings",
+        url: API + "/rings",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmMTZmOTRmZi0wMTRhLTRjMDYtYTE4OC1mNTgzZmUwOTM1NWEiLCJzdWIiOiJhZG1pbiIsInBlcm1pc3Npb25zIjoiV1JJVEUsUkVBRCIsImV4cCI6MTY3Mzk5NzU2OH0.sLVA_CE2V-NC76RcvHJl4Ml1ncaN4Gvw1vJBT05bodg",
+          Authorization: "Bearer " + TOKEN,
         },
         data: {
           name: item.ring_id,
