@@ -43,7 +43,7 @@ async function main() {
         console.log("group not found", item.group_id);
       }
 
-      await axios({
+      const { data } = await axios({
         method: "PUT",
         url: API + "/rings",
         headers: {
@@ -62,9 +62,10 @@ async function main() {
           type: "ONLINE",
         },
       });
+      console.log("🚀 성공: ", item.ring_id);
     }
   } catch (e) {
-    console.log(e?.response?.data?.data);
+    console.log(e?.response?.data);
   }
 }
 

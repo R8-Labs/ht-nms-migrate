@@ -119,6 +119,7 @@ async function main() {
                 ),
         };
       });
+
       finalPaths.push({
         coordinate: {
           lat: parseFloat(toDevice.pos_lat),
@@ -135,7 +136,7 @@ async function main() {
         ),
       });
 
-      // console.log("🚀  finalPaths", finalPaths);
+      console.log("🚀  finalPaths", finalPaths);
       // console.log("🚀 ~ file: links.js:67 ~ main ~ item", item);
       // console.log("🚀 ~ file: links.js:66 ~ main ~ fromDevice", { ip: fromDevice.ip, port: item.device1_port });
       // console.log("🚀 ~ file: links.js:66 ~ main ~ toDevice", { ip: toDevice.ip, port: item.device2_port });

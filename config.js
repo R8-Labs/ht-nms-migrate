@@ -1,5 +1,6 @@
 const API = "http://1.223.227.163:5000";
-const TOKEN = "";
+const TOKEN =
+  "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmMTZmOTRmZi0wMTRhLTRjMDYtYTE4OC1mNTgzZmUwOTM1NWEiLCJzdWIiOiJhZG1pbiIsInBlcm1pc3Npb25zIjoiV1JJVEUsUkVBRCIsImV4cCI6MTY3NDY1OTUxMn0.TWauSS4sBtm1ro53WKIMAL5g9TWjltTlEmx326lnZ0U";
 
 module.exports = {
   API,

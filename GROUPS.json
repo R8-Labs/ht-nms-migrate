@@ -1,0 +1,112 @@
+[
+	{
+		"group_id": "39호선",
+		"comments": "",
+		"seq": 37,
+		"reg_id": "admin",
+		"mod_id": "admin",
+		"reg_dtm": "2020-11-26 14:08:04",
+		"mod_dtm": "2020-11-26 14:08:04",
+		"disp_priority": 37
+	},
+	{
+		"group_id": "BRT",
+		"comments": "",
+		"seq": 1,
+		"reg_id": null,
+		"mod_id": "admin",
+		"reg_dtm": null,
+		"mod_dtm": "2020-09-01 10:35:48",
+		"disp_priority": 1
+	},
+	{
+		"group_id": "test",
+		"comments": "",
+		"seq": 41,
+		"reg_id": "admin",
+		"mod_id": "admin",
+		"reg_dtm": "2021-12-22 13:55:32",
+		"mod_dtm": "2021-12-22 13:55:32",
+		"disp_priority": null
+	},
+	{
+		"group_id": "UTIS",
+		"comments": "",
+		"seq": 3,
+		"reg_id": null,
+		"mod_id": "admin",
+		"reg_dtm": null,
+		"mod_dtm": "2020-05-07 16:30:54",
+		"disp_priority": 3
+	},
+	{
+		"group_id": "버스외곽",
+		"comments": "",
+		"seq": 39,
+		"reg_id": "admin",
+		"mod_id": "admin",
+		"reg_dtm": "2021-10-12 15:55:46",
+		"mod_dtm": "2021-10-12 15:55:46",
+		"disp_priority": null
+	},
+	{
+		"group_id": "삼송지구",
+		"comments": "",
+		"seq": 40,
+		"reg_id": "admin",
+		"mod_id": "admin",
+		"reg_dtm": "2021-12-21 10:02:07",
+		"mod_dtm": "2022-03-30 14:48:45",
+		"disp_priority": 2
+	},
+	{
+		"group_id": "서오릉",
+		"comments": "",
+		"seq": 4,
+		"reg_id": null,
+		"mod_id": "admin",
+		"reg_dtm": null,
+		"mod_dtm": "2020-05-07 16:30:58",
+		"disp_priority": 4
+	},
+	{
+		"group_id": "서울청이관",
+		"comments": "",
+		"seq": 5,
+		"reg_id": null,
+		"mod_id": "admin",
+		"reg_dtm": null,
+		"mod_dtm": "2020-05-07 16:31:08",
+		"disp_priority": 5
+	},
+	{
+		"group_id": "식사지구",
+		"comments": "",
+		"seq": 38,
+		"reg_id": "admin",
+		"mod_id": "admin",
+		"reg_dtm": "2021-01-20 14:21:20",
+		"mod_dtm": "2021-01-20 14:21:20",
+		"disp_priority": 38
+	},
+	{
+		"group_id": "제2자유로",
+		"comments": "",
+		"seq": 35,
+		"reg_id": "admin",
+		"mod_id": "admin",
+		"reg_dtm": "2019-10-24 12:42:17",
+		"mod_dtm": "2020-11-20 10:49:12",
+		"disp_priority": 35
+	},
+	{
+		"group_id": "킨텍스",
+		"comments": "",
+		"seq": 6,
+		"reg_id": null,
+		"mod_id": "admin",
+		"reg_dtm": null,
+		"mod_dtm": "2020-05-07 16:31:11",
+		"disp_priority": 6
+	}
+]
