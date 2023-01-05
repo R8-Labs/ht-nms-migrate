@@ -237,8 +237,20 @@ async function main() {
   try {
     for (const item of DEVICES) {
       // console.log("start", item.device_id);
+
+      const { data } = await axios({
+        url: API + "/models",
+        params: { size: 20000 },
+        headers: {
+          Authorization: "Bearer " + TOKEN,
+        },
+      });
+
+      const MODELLIST = data.data;
+
       let modelId = null;
-      const model = MODELS.filter((m) => m.name === item.model_id);
+      // const model = MODELS.filter((m) => m.name === item.model_id);
+      const model = MODELLIST.filter((m) => m.name === item.model_id);
       if (model.length > 0) {
         modelId = model[0].id;
       } else {

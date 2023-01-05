@@ -136,11 +136,11 @@ async function main() {
         ),
       });
 
-      console.log("🚀  finalPaths", finalPaths);
+      console.log("🚀 final Path 마지막 좌표 => ", finalPaths[finalPaths.length - 1]?.coordinate);
       // console.log("🚀 ~ file: links.js:67 ~ main ~ item", item);
       // console.log("🚀 ~ file: links.js:66 ~ main ~ fromDevice", { ip: fromDevice.ip, port: item.device1_port });
-      // console.log("🚀 ~ file: links.js:66 ~ main ~ toDevice", { ip: toDevice.ip, port: item.device2_port });
       const distance = finalPaths.reduce((acc, cur) => acc + cur.distance, 0);
+      console.log("🚀 to 기기 좌표 => ", { lat: toDevice.pos_lat, lon: toDevice.pos_lon });
 
       const data = {
         ringId: ringId,
@@ -154,14 +154,14 @@ async function main() {
         },
         paths: finalPaths,
       };
-      console.log("🚀 ~ file: links.js:155 ~ main ~ data", data);
+      // console.log("🚀 ~ file: links.js:155 ~ main ~ data", data);
 
-      // await axios({
-      //   url: "http://1.223.227.163:5000" + "/links",
-      //   method: "PUT",
-      //   headers,
-      //   data,
-      // });
+      await axios({
+        url: API + "/links",
+        method: "PUT",
+        headers,
+        data,
+      });
 
       // await sleep(10000);
     }
