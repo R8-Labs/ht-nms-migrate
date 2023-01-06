@@ -66,25 +66,25 @@ async function main() {
     Authorization: "Bearer " + TOKEN,
   };
 
-  try {
-    const { data } = await axios({
-      url: API + "/rings",
-      params: { size: 10000 },
-      headers,
-    });
+  const { data } = await axios({
+    url: API + "/rings",
+    params: { size: 10000 },
+    headers,
+  });
 
-    const RINGLIST = data.data;
+  const RINGLIST = data.data;
 
-    const { data: portData } = await axios({
-      url: API + "/devices/-/ports",
-      params: { size: 200000 },
-      headers,
-    });
+  const { data: portData } = await axios({
+    url: API + "/devices/-/ports",
+    params: { size: 200000 },
+    headers,
+  });
 
-    console.log("🚀 ~ file: links.js:80 ~ main ~ portData", portData);
-    const PORTLIST = portData.data;
+  console.log("🚀 ~ file: links.js:80 ~ main ~ portData", portData);
+  const PORTLIST = portData.data;
 
-    for (const item of LIN) {
+  for (const item of LIN) {
+    try {
       console.log("start", "---");
       // console.log("🚀 ~ file: links.js:67 ~ main ~ ", item);
       const ringId = RINGLIST.filter((ring) => ring.name === item.ring_id)[0]?.id;
@@ -98,27 +98,39 @@ async function main() {
       );
       // console.log("🚀  _paths", _paths);
 
-      const finalPaths = _paths.map((path, idx) => {
+      let finalPaths = [
+        {
+          coordinate: {
+            lat: parseFloat(fromDevice.pos_lat),
+            lng: parseFloat(fromDevice.pos_lon),
+          },
+          type: "NONE",
+          sort: 0,
+          iconId: null,
+          distance: 0,
+        },
+      ];
+
+      const btwPaths = _paths.map((path, idx) => {
         const { lat, lon } = path;
         return {
           coordinate: {
             lat: parseFloat(lat),
             lng: parseFloat(lon),
           },
-          type: idx === 0 ? "NONE" : "BUNKER",
-          sort: idx,
+          type: "BUNKER",
+          sort: idx + 1,
           iconId: null,
-          distance:
-            idx === 0
-              ? 0
-              : getDistance(
-                  parseFloat(lat),
-                  parseFloat(lon),
-                  parseFloat(_paths[idx - 1].lat),
-                  parseFloat(_paths[idx - 1].lon)
-                ),
+          distance: getDistance(
+            parseFloat(lat),
+            parseFloat(lon),
+            parseFloat(idx === 0 ? finalPaths[0]?.coordinate?.lat : _paths[idx - 1].lat),
+            parseFloat(idx === 0 ? finalPaths[0]?.coordinate?.lng : _paths[idx - 1].lon)
+          ),
         };
       });
+
+      finalPaths.push(...btwPaths);
 
       finalPaths.push({
         coordinate: {
@@ -136,11 +148,12 @@ async function main() {
         ),
       });
 
-      console.log("🚀 final Path 마지막 좌표 => ", finalPaths[finalPaths.length - 1]?.coordinate);
+      console.log("🚀 from 기기 좌표 => ", { lat: fromDevice.pos_lat, lon: fromDevice.pos_lon });
+      console.log("🚀 final Path => ", finalPaths);
+      console.log("🚀 to 기기 좌표 => ", { lat: toDevice.pos_lat, lon: toDevice.pos_lon });
       // console.log("🚀 ~ file: links.js:67 ~ main ~ item", item);
       // console.log("🚀 ~ file: links.js:66 ~ main ~ fromDevice", { ip: fromDevice.ip, port: item.device1_port });
       const distance = finalPaths.reduce((acc, cur) => acc + cur.distance, 0);
-      console.log("🚀 to 기기 좌표 => ", { lat: toDevice.pos_lat, lon: toDevice.pos_lon });
 
       const data = {
         ringId: ringId,
@@ -164,10 +177,11 @@ async function main() {
       });
 
       // await sleep(10000);
+    } catch (e) {
+      console.log(e?.response?.data?.fields);
+      console.warn("링크 등록 실패", { from: item.device1_ip, to: item.device2_ip });
+      continue;
     }
-  } catch (e) {
-    console.log(e);
-    console.log(e?.response?.data?.fields);
   }
 }
 

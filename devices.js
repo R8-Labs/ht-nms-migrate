@@ -234,20 +234,19 @@ const format = {
 };
 
 async function main() {
-  try {
-    for (const item of DEVICES) {
-      // console.log("start", item.device_id);
+  const { data } = await axios({
+    url: API + "/models",
+    params: { size: 20000 },
+    headers: {
+      Authorization: "Bearer " + TOKEN,
+    },
+  });
 
-      const { data } = await axios({
-        url: API + "/models",
-        params: { size: 20000 },
-        headers: {
-          Authorization: "Bearer " + TOKEN,
-        },
-      });
+  const MODELLIST = data.data;
 
-      const MODELLIST = data.data;
-
+  for (const item of DEVICES) {
+    // console.log("start", item.device_id);
+    try {
       let modelId = null;
       // const model = MODELS.filter((m) => m.name === item.model_id);
       const model = MODELLIST.filter((m) => m.name === item.model_id);
@@ -280,9 +279,14 @@ async function main() {
           useBypass: item.is_bypass === "Y" ? true : false,
         },
       });
+      console.log("device added => ", item.device_id, item.ip);
+      // await sleep(100);
+    } catch (e) {
+      console.log(e?.response?.data);
+      console.warn("기기 등록 실패 -> ", item.device_id, item.ip);
+      continue;
+      console.log(e);
     }
-  } catch (e) {
-    console.log(e?.response?.data);
   }
 }
 
