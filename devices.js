@@ -268,7 +268,7 @@ async function main() {
           ip: item.ip,
           mac: "ff:ff:ff:ff:ff:ff",
           modelId,
-          description: item.comments,
+          description: item.comments || "",
           sort: item.disp_priority ? parseInt(item.disp_priority) : 1,
           coordinate: {
             latitude: parseFloat(item.pos_lat),
@@ -280,7 +280,7 @@ async function main() {
         },
       });
       console.log("device added => ", item.device_id, item.ip);
-      // await sleep(100);
+      await sleep(500);
     } catch (e) {
       console.log(e?.response?.data);
       console.warn("기기 등록 실패 -> ", item.device_id, item.ip);
